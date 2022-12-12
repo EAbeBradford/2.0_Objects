@@ -28,7 +28,7 @@ public class Astronaut {
     public Astronaut(int pXpos, int pYpos) {
         xpos = pXpos;
         ypos = pYpos;
-        dx =10;
+        dx =1;
         dy =0;
         width = 60;
         height = 60;
@@ -41,6 +41,14 @@ public class Astronaut {
         xpos = xpos + dx;
         ypos = ypos + dy;
  
+    }
+
+    public void wrap(){
+        if(xpos>1000){
+            xpos = 0;
+        }
+        xpos = xpos + dx;
+        ypos = ypos + dy;
     }
 }
 

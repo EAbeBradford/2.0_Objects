@@ -42,11 +42,13 @@ public class BasicGameApp implements Runnable {
    
 	public BufferStrategy bufferStrategy;
 	public Image astroPic;
+	public Image rockyPic;
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
 	private Astronaut astro;
-
+	private Astronaut jack;
+	private Astronaut rocky;
 
    // Main method definition
    // This is the code that runs first and automatically
@@ -68,7 +70,13 @@ public class BasicGameApp implements Runnable {
       //variable and objects
       //create (construct) the objects needed for the game and load up 
 		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png"); //load the picture
-		astro = new Astronaut(10,100);
+		rockyPic = Toolkit.getDefaultToolkit().getImage("rocky.PNG"); //load the picture
+
+		astro = new Astronaut(950,100);
+		jack = new Astronaut(300,40);
+		rocky = new Astronaut(400, 400);
+		jack.dy = 1;
+		jack.dx = 0;
 
 
 	}// BasicGameApp()
@@ -96,7 +104,8 @@ public class BasicGameApp implements Runnable {
 	public void moveThings()
 	{
       //calls the move( ) code in the objects
-		astro.move();
+		astro.wrap();
+		jack.move();
 
 	}
 	
@@ -148,7 +157,10 @@ public class BasicGameApp implements Runnable {
 
       //draw the image of the astronaut
 		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
+		g.drawImage(astroPic, jack.xpos, jack.ypos, jack.width, jack.height, null);
+		g.drawImage(rockyPic, rocky.xpos, rocky.ypos, rocky.width, rocky.height, null);
 
+		//g.draw(new Rectangle(astro.xpos, astro.ypos, astro.width, astro.height));
 		g.dispose();
 
 		bufferStrategy.show();
