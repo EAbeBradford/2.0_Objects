@@ -50,6 +50,23 @@ public class Astronaut {
         xpos = xpos + dx;
         ypos = ypos + dy;
     }
+
+    public void bounce(){
+        if(xpos>1000-59){
+            dx = -dx;
+        }
+        if(ypos>700-59){
+            dy = -dy;
+        }
+        if(xpos<0){
+            dx = -dx;
+        }
+        if(ypos<0){
+            dy = -dy;
+        }
+        xpos = xpos + dx;
+        ypos = ypos + dy;
+    }
 }
 
 
