@@ -12,6 +12,7 @@ public class Astronaut {
     public int width;
     public int height;
     public boolean isAlive;            //a boolean to denote if the hero is alive or dead.
+    public Rectangle rec;
 
     //VARIABLE DECLARATION SECTION
     //Here's where you state which variables you are going to use.
@@ -33,6 +34,7 @@ public class Astronaut {
         width = 60;
         height = 60;
         isAlive = true;
+        rec  = new Rectangle(xpos, ypos, height, width);
  
     } // constructor
 
@@ -40,6 +42,7 @@ public class Astronaut {
     public void move() {
         xpos = xpos + dx;
         ypos = ypos + dy;
+        rec  = new Rectangle(xpos, ypos, height, width);
  
     }
 
@@ -49,6 +52,7 @@ public class Astronaut {
         }
         xpos = xpos + dx;
         ypos = ypos + dy;
+        rec  = new Rectangle(xpos, ypos, height, width);
     }
 
     public void bounce(){
@@ -66,6 +70,7 @@ public class Astronaut {
         }
         xpos = xpos + dx;
         ypos = ypos + dy;
+        rec  = new Rectangle(xpos, ypos, height, width);
     }
 }
 

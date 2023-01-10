@@ -42,13 +42,12 @@ public class BasicGameApp implements Runnable {
    
 	public BufferStrategy bufferStrategy;
 	public Image astroPic;
-	public Image rockyPic;
+	public Image background;
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
 	private Astronaut astro;
 	private Astronaut jack;
-	//private Astronaut rocky;
 
    // Main method definition
    // This is the code that runs first and automatically
@@ -70,14 +69,14 @@ public class BasicGameApp implements Runnable {
       //variable and objects
       //create (construct) the objects needed for the game and load up 
 		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png"); //load the picture
+		background = Toolkit.getDefaultToolkit().getImage("rockB.PNG");
 		//rockyPic = Toolkit.getDefaultToolkit().getImage("rocky.PNG"); //load the picture
 
-		astro = new Astronaut(900,100);
-		jack = new Astronaut(300,40);
+		astro = new Astronaut(350,100);
+		jack = new Astronaut(350,40);
 		//rocky = new Astronaut(400, 400);
 		jack.dy = 1;
-		jack.dx = 0;
-
+		jack.dx = -1;
 
 	}// BasicGameApp()
 
@@ -100,10 +99,19 @@ public class BasicGameApp implements Runnable {
 		}
 	}
 
+	public void crash()
+	{
+		if(astro.rec.intersects(jack.rec))
+		{
+			System.out.println("crash");
+		}
+	}
+
 
 	public void moveThings()
 	{
       //calls the move( ) code in the objects
+		crash();
 		astro.bounce();
 		jack.bounce();
 
@@ -156,11 +164,14 @@ public class BasicGameApp implements Runnable {
 		g.clearRect(0, 0, WIDTH, HEIGHT);
 
       //draw the image of the astronaut
+		g.drawImage(background, 0, 0, WIDTH, HEIGHT, null);
 		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
 		g.drawImage(astroPic, jack.xpos, jack.ypos, jack.width, jack.height, null);
 		//g.drawImage(rockyPic, rocky.xpos, rocky.ypos, rocky.width, rocky.height, null);
 
-		//g.draw(new Rectangle(astro.xpos, astro.ypos, astro.width, astro.height));
+		g.draw(new Rectangle(astro.xpos, astro.ypos, astro.width, astro.height));
+		g.draw(new Rectangle(jack.xpos, jack.ypos, jack.width, jack.height));
+
 		g.dispose();
 
 		bufferStrategy.show();
