@@ -101,9 +101,14 @@ public class BasicGameApp implements Runnable {
 
 	public void crash()
 	{
-		if(astro.rec.intersects(jack.rec))
+		if(astro.rec.intersects(jack.rec) && astro.isCrashing == false)
 		{
+			astro.isCrashing = true;
 			System.out.println("crash");
+		}
+		
+		if(!astro.rec.instersects(jack.rec)){
+			astro.isCrashing = false;
 		}
 	}
 
