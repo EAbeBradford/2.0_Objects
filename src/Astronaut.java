@@ -13,6 +13,7 @@ public class Astronaut {
     public int height;
     public boolean isAlive;            //a boolean to denote if the hero is alive or dead.
     public Rectangle rec;
+    public boolean isCrashing;
 
     //VARIABLE DECLARATION SECTION
     //Here's where you state which variables you are going to use.
@@ -35,6 +36,7 @@ public class Astronaut {
         height = 60;
         isAlive = true;
         rec  = new Rectangle(xpos, ypos, height, width);
+        isCrashing = false;
  
     } // constructor
 
